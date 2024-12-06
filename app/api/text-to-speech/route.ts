@@ -1,10 +1,16 @@
 // app/api/text-to-speech/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 
+
+const ELEVENLABS_API_KEY='sk_fd0962fcc4a68c670206d4279bc964062c08fffc50573d5e'
+const voiceId='21m00Tcm4TlvDq8ikWAM'
+
+
+
 export async function POST(request: NextRequest) {
     try {
         // Parse the incoming request body
-        const { text, voiceId, modelId } = await request.json();
+        const { text, modelId } = await request.json();
 
         // Validate input
         if (!text) {
@@ -15,7 +21,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Validate API key
-        const apiKey = process.env.ELEVENLABS_API_KEY;
+        const apiKey = ELEVENLABS_API_KEY;
         if (!apiKey) {
             return NextResponse.json(
                 { message: 'ElevenLabs API key is not configured' },
@@ -25,7 +31,7 @@ export async function POST(request: NextRequest) {
 
         // Make request to ElevenLabs API
         const elevenLabsResponse = await fetch(
-            `https://api.elevenlabs.io/v1/text-to-speech/${voiceId || 'default-voice-id'}`,
+            `https://api.elevenlabs.io/v1/text-to-speech/${'21m00Tcm4TlvDq8ikWAM'}`,
             {
                 method: 'POST',
                 headers: {
