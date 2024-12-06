@@ -3,8 +3,6 @@ import { NextRequest, NextResponse } from 'next/server';
 
 
 const ELEVENLABS_API_KEY='sk_fd0962fcc4a68c670206d4279bc964062c08fffc50573d5e'
-const voiceId='21m00Tcm4TlvDq8ikWAM'
-
 
 
 export async function POST(request: NextRequest) {
