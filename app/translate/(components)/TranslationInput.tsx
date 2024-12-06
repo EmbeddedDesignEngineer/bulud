@@ -1,5 +1,6 @@
 import {ArrowUp} from "@/public/icons/arrowUp"
 import {FormEvent, useState} from "react"
+import WordStorageService from "@/app/(hooks)/WordStorageService";
 
 const TranslationInput = ({ onChange }: {onChange: (value: string) => void}) => {
     const [value, setValue] = useState<string>('')
@@ -7,7 +8,7 @@ const TranslationInput = ({ onChange }: {onChange: (value: string) => void}) => 
     const onSubmit = (e: FormEvent) => {
         e.preventDefault()
         onChange(value)
-        // setValue('')
+        WordStorageService.addWord(value)
     }
 
     return (
